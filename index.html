@@ -18,23 +18,42 @@
     <div
       class="container d-flex flex-column justify-content-center align-items-center vh-100"
     >
-      <div class="text-center mb-3">
-        <h2 class="text-white fw-bold">
-          <i class="fa-solid fa-cloud-sun text-warning"></i> Weather<span
-            class="text-info"
-            >GPT</span
+      <div
+        class="text-center mb-3 d-flex align-items-center justify-content-between w-100 px-4"
+        style="max-width: 500px"
+      >
+        <div>
+          <h2 class="text-white fw-bold m-0">
+            <i class="fa-solid fa-cloud-sun text-warning"></i> Weather<span
+              class="text-info"
+              >GPT</span
+            >
+          </h2>
+        </div>
+        <div>
+          <select
+            id="langSelect"
+            class="form-select form-select-sm bg-transparent text-white border-secondary shadow-none"
           >
-        </h2>
-        <p class="text-light m-0 small opacity-75">
-          Your intelligent conversational meteorology companion
-        </p>
+            <option value="en" class="bg-dark">English</option>
+            <option value="hi" class="bg-dark">हिंदी (Hindi)</option>
+            <option value="bn" class="bg-dark">বাংলা (Bengali)</option>
+            <option value="ta" class="bg-dark">தமிழ் (Tamil)</option>
+            <option value="te" class="bg-dark">తెలుగు (Telugu)</option>
+            <option value="kn" class="bg-dark">ಕನ್ನಡ (Kannada)</option>
+            <option value="ml" class="bg-dark">മലയാളം (Malayalam)</option>
+            <option value="mr" class="bg-dark">मराठी (Marathi)</option>
+            <option value="gu" class="bg-dark">ગુજરાતી (Gujarati)</option>
+            <option value="pa" class="bg-dark">ਪੰਜਾਬੀ (Punjabi)</option>
+            <option value="or" class="bg-dark">ଓଡ଼ିଆ (Odia)</option>
+          </select>
+        </div>
       </div>
 
       <div class="chat-container shadow-lg d-flex flex-column">
         <div id="chatWindow" class="chat-window flex-grow-1 p-3 overflow-auto">
-          <div class="message bot-msg">
-            Hello! 👋 Main WeatherGPT hoon. Aap kisi bhi shehar ka weather ya
-            5-din ka forecast puch sakte hain.
+          <div id="welcomeMsg" class="message bot-msg">
+            Hello! 👋 Ask me for the weather or forecast of any city.
           </div>
         </div>
 
@@ -43,13 +62,15 @@
           <button class="chip-btn" onclick="sendPreset('Mumbai')">
             Mumbai
           </button>
-          <button class="chip-btn" onclick="sendPreset('London')">
-            London
+          <button class="chip-btn" onclick="sendPreset('Bangalore')">
+            Bangalore
           </button>
-          <button class="chip-btn" onclick="sendPreset('New York')">
-            New York
+          <button class="chip-btn" onclick="sendPreset('Chennai')">
+            Chennai
           </button>
-          <button class="chip-btn" onclick="sendPreset('Tokyo')">Tokyo</button>
+          <button class="chip-btn" onclick="sendPreset('Kolkata')">
+            Kolkata
+          </button>
         </div>
 
         <div
@@ -62,7 +83,7 @@
             type="text"
             id="userInput"
             class="form-control bg-transparent text-white border-0 shadow-none"
-            placeholder="Type a city or ask forecast..."
+            placeholder="Type a city..."
             onkeypress="checkEnter(event)"
           />
           <button class="send-btn" onclick="sendMessage()">
