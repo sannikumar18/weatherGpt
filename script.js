@@ -11,15 +11,12 @@ function sendPreset(cityName) {
   sendMessage();
 }
 
-// Mic button se bol kar input lene ke liye (Speech-to-Text)
 function startVoiceInput() {
   window.SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
 
   if (!window.SpeechRecognition) {
-    alert(
-      "Voice input is not supported in this browser. Please use Chrome or Edge.",
-    );
+    alert("Voice input is not supported in this browser. Please use Chrome.");
     return;
   }
 
@@ -28,7 +25,7 @@ function startVoiceInput() {
 
   let micIcon = document.getElementById("micIcon");
   micIcon.classList.remove("text-danger");
-  micIcon.classList.add("text-success"); // Sunte waqt green ho jayega
+  micIcon.classList.add("text-success");
 
   recognition.onresult = function (event) {
     let spokenText = event.results[0][0].transcript;
@@ -82,8 +79,10 @@ async function sendMessage() {
     .replace(/next days/gi, "")
     .trim();
 
-  chatWindow.innerHTML +=
-    '<div id="loading" class="message bot-msg">Analyzing weather data...</div>';
+  chatWindow.innerHTML += `
+    <div id="loading" class="message bot-msg">
+      <div class="typing-dots"><span></span><span></span><span></span></div>
+    </div>`;
   chatWindow.scrollTop = chatWindow.scrollHeight;
 
   try {
